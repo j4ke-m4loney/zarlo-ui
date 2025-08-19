@@ -36,6 +36,47 @@
         position: relative;
       }
 
+      /* Logo styles */
+      .logo-icon {
+        width: 32px;
+        height: 32px;
+        display: inline-block;
+        vertical-align: middle;
+      }
+
+      .logo-icon-small {
+        width: 16px;
+        height: 16px;
+        display: inline-block;
+        vertical-align: middle;
+      }
+
+      /* Background image with darkening overlay */
+      body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url("wizard-2-journy-background.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        z-index: 0;
+      }
+
+      body::after {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(10, 10, 10, 0.85);
+        z-index: 0;
+      }
+
       /* Animated background grid */
       .bg-grid {
         position: fixed;
@@ -585,6 +626,80 @@
       .hero-prompt-submit svg {
         width: 16px;
         height: 16px;
+      }
+
+      /* Social Proof Section */
+      .social-proof-section {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-top: 6rem;
+        justify-content: center;
+        animation: fadeInUp 1s ease-out 1s both;
+      }
+
+      .social-avatars {
+        display: flex;
+        margin-right: 0.1rem;
+      }
+
+      .social-avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: 2px solid rgba(10, 10, 10, 0.9);
+        margin-left: -12px;
+        position: relative;
+        background-size: cover;
+        background-position: center;
+        transition: all 0.3s ease;
+      }
+
+      .social-avatar:first-child {
+        margin-left: 0;
+      }
+
+      .social-avatar:hover {
+        transform: translateY(-4px) scale(1.1);
+        z-index: 10;
+        box-shadow: 0 8px 20px rgba(139, 92, 246, 0.3);
+      }
+
+      /* Avatar backgrounds - using gradients as placeholders for actual photos */
+      .social-avatar.avatar-1 {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      }
+
+      .social-avatar.avatar-2 {
+        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      }
+
+      .social-avatar.avatar-3 {
+        background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      }
+
+      .social-avatar.avatar-4 {
+        background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+      }
+
+      .social-avatar.avatar-5 {
+        background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+      }
+
+      .social-proof-text {
+        font-size: 0.95rem;
+        color: rgba(248, 250, 252, 0.7);
+        font-weight: 500;
+        margin: 0;
+      }
+
+      .student-count {
+        font-weight: 700;
+        color: rgba(248, 250, 252, 0.9);
+        background: linear-gradient(135deg, #6366f1 0%, #ec4899 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
       }
 
       /* AI Prompt Interface */
@@ -1237,7 +1352,7 @@
                   height="3"
                   rx="1"
                   transform="rotate(-45 8 14)"
-                  fill="currentColor"
+                  fill="white"
                   opacity="0.9"
                 />
                 <rect
@@ -1246,8 +1361,8 @@
                   width="16"
                   height="0.5"
                   transform="rotate(-45 9.5 15.5)"
-                  fill="white"
-                  opacity="0.5"
+                  fill="url(#magicGradient)"
+                  opacity="0.8"
                 />
 
                 <!-- Wand Handle -->
@@ -1258,17 +1373,17 @@
                   height="2.5"
                   rx="1"
                   transform="rotate(-45 5 17)"
-                  fill="currentColor"
+                  fill="white"
                 />
 
                 <!-- Star at tip -->
                 <path
                   d="M21 8L22.5 11L26 11.5L23.5 14L24 17.5L21 16L18 17.5L18.5 14L16 11.5L19.5 11L21 8Z"
-                  fill="currentColor"
+                  fill="url(#magicGradient)"
                 />
 
                 <!-- Sparkles -->
-                <circle cx="14" cy="10" r="1" fill="currentColor" opacity="0.8">
+                <circle cx="14" cy="10" r="1" fill="white" opacity="0.8">
                   <animate
                     attributeName="opacity"
                     values="0;1;0"
@@ -1277,13 +1392,7 @@
                     begin="0s"
                   />
                 </circle>
-                <circle
-                  cx="26"
-                  cy="7"
-                  r="0.8"
-                  fill="currentColor"
-                  opacity="0.7"
-                >
+                <circle cx="26" cy="7" r="0.8" fill="white" opacity="0.7">
                   <animate
                     attributeName="opacity"
                     values="0;1;0"
@@ -1292,13 +1401,7 @@
                     begin="0.5s"
                   />
                 </circle>
-                <circle
-                  cx="24"
-                  cy="20"
-                  r="0.8"
-                  fill="currentColor"
-                  opacity="0.7"
-                >
+                <circle cx="24" cy="20" r="0.8" fill="white" opacity="0.7">
                   <animate
                     attributeName="opacity"
                     values="0;1;0"
@@ -1307,13 +1410,7 @@
                     begin="1s"
                   />
                 </circle>
-                <circle
-                  cx="11"
-                  cy="15"
-                  r="0.6"
-                  fill="currentColor"
-                  opacity="0.6"
-                >
+                <circle cx="11" cy="15" r="0.6" fill="white" opacity="0.6">
                   <animate
                     attributeName="opacity"
                     values="0;1;0"
@@ -1378,20 +1475,15 @@
       <main class="hero">
         <div class="hero-content">
           <h1 class="hero-title">
-            <span class="line1">Build a Website or App with</span>
-            <span class="line2"
-              >Ai Magic
-              <img
-                class="wizard-character"
-                src="wand1.png"
-                alt="Magic Wand"
-                width="100"
-                height="100"
-              />
-            </span>
+            <span class="line1">Build Something with</span>
+            <span class="line2">AI </span>
           </h1>
 
-          <p class="hero-subtitle">Chat with AI to build your app or website</p>
+          <p class="hero-subtitle">
+            <span class="line1">Chat with AI and build a Website or App</span
+            ><br />
+            <span class="line2">like a Wizard, with your words</span>
+          </p>
 
           <!-- Hero prompt input -->
           <div class="hero-prompt-container">
@@ -1418,7 +1510,7 @@
                     height="3"
                     rx="1"
                     transform="rotate(-45 8 14)"
-                    fill="currentColor"
+                    fill="white"
                     opacity="0.9"
                   />
                   <rect
@@ -1427,8 +1519,8 @@
                     width="16"
                     height="0.5"
                     transform="rotate(-45 9.5 15.5)"
-                    fill="white"
-                    opacity="0.5"
+                    fill="url(#magicGradient2)"
+                    opacity="0.8"
                   />
 
                   <!-- Wand Handle -->
@@ -1439,47 +1531,56 @@
                     height="2.5"
                     rx="1"
                     transform="rotate(-45 5 17)"
-                    fill="currentColor"
+                    fill="white"
                   />
 
                   <!-- Star at tip -->
                   <path
                     d="M21 8L22.5 11L26 11.5L23.5 14L24 17.5L21 16L18 17.5L18.5 14L16 11.5L19.5 11L21 8Z"
-                    fill="currentColor"
+                    fill="url(#magicGradient2)"
                   />
 
                   <!-- Sparkles -->
-                  <circle
-                    cx="14"
-                    cy="10"
-                    r="1"
-                    fill="currentColor"
-                    opacity="0.8"
-                  />
-                  <circle
-                    cx="26"
-                    cy="7"
-                    r="0.8"
-                    fill="currentColor"
-                    opacity="0.7"
-                  />
-                  <circle
-                    cx="24"
-                    cy="20"
-                    r="0.8"
-                    fill="currentColor"
-                    opacity="0.7"
-                  />
-                  <circle
-                    cx="11"
-                    cy="15"
-                    r="0.6"
-                    fill="currentColor"
-                    opacity="0.6"
-                  />
+                  <circle cx="14" cy="10" r="1" fill="white" opacity="0.8" />
+                  <circle cx="26" cy="7" r="0.8" fill="white" opacity="0.7" />
+                  <circle cx="24" cy="20" r="0.8" fill="white" opacity="0.7" />
+                  <circle cx="11" cy="15" r="0.6" fill="white" opacity="0.6" />
+
+                  <!-- Gradient definition -->
+                  <defs>
+                    <linearGradient
+                      id="magicGradient2"
+                      x1="0%"
+                      y1="0%"
+                      x2="100%"
+                      y2="100%"
+                    >
+                      <stop
+                        offset="0%"
+                        style="stop-color: #e879f9; stop-opacity: 1"
+                      />
+                      <stop
+                        offset="100%"
+                        style="stop-color: #fbbf24; stop-opacity: 1"
+                      />
+                    </linearGradient>
+                  </defs>
                 </svg>
                 <span>Create</span>
               </button>
+            </div>
+
+            <!-- Social Proof Section -->
+            <div class="social-proof-section">
+              <div class="social-avatars">
+                <div class="social-avatar avatar-1"></div>
+                <div class="social-avatar avatar-2"></div>
+                <div class="social-avatar avatar-3"></div>
+              </div>
+              <p class="social-proof-text">
+                Join <span class="student-count">1,033</span> other builders
+                like you
+              </p>
             </div>
           </div>
         </div>
